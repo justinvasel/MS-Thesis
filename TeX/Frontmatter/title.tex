@@ -1,0 +1,57 @@
+%-----------------------------------------------------------------------------
+%
+%          PHYSICS  M.S.     THESIS
+%          JUSTIN A. VASEL
+%
+%          This began as the template offered by the University of Minnesota, 
+%          but I've made a few changes here and there...  
+%
+%          -->  title.tex
+%
+%-----------------------------------------------------------------------------
+
+
+% For a  PhD give the command \phd. Default is masters
+%\degree (normally Doctor of Philosophy or Master of Science)
+%\initials (normally Ph.D. or M.S.)
+\ms % use if for a Master of Science thesis
+%\phd % use if for a Ph.D. dissertation
+%\draft
+
+\title{\fontsize{45}{60}\selectfont\garamond UNDER THE HOOD \normalfont \normalsize  \\ \vspace{0.1in} \large \light \emph{Preparing the Helium and Lead Observatory for Full Operation} \normalfont \normalsize}
+\author{Justin A. Vasel}
+\campus{University of Minnesota Duluth} 
+\program{Physics} 
+\degree{\minion\small\sc Master of Science \rm\normalsize\normalfont}
+\director{Advisor: Dr. Alec Habig} 
+
+% Optionally specify the month and year.
+\submissionmonth{August} % defaults to current month.
+\submissionyear{2013} % defaults to current year.
+
+%Comment out below on final copy
+\abstract{\input{./Frontmatter/abstract}}
+\words{331}    % number of words in the abstract
+\copyrightpage % Do you want copyright protection?
+\acknowledgements{\input{./Frontmatter/acknowledge}}
+\dedication{\input{./Frontmatter/dedication}}
+\abbreviations{\input{./Frontmatter/colophon}}
+
+% Use a special preface
+%\extra{\input{preface}}
+
+% The \beforepreface command actually causes insertion of the title, 
+% abstract, signature, and copyright pages into the new document.
+\beforepreface 
+
+% Define the text to go before the table of contents
+\figurespage
+\tablespage
+
+% The \afterpreface command actually causes insertion of the
+% contents, list of figures, etc. into the new document.
+\afterpreface            
+
+
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------

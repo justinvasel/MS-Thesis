@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: ./Frontmatter/title.aux
+A level-1 auxiliary file: ./Chapters/intro.aux
+A level-1 auxiliary file: ./Chapters/neutrinos.aux
+A level-1 auxiliary file: ./Chapters/supernovae.aux
+A level-1 auxiliary file: ./Chapters/snews.aux
+A level-1 auxiliary file: ./Chapters/halo.aux
+A level-1 auxiliary file: ./Chapters/halo2.aux
+A level-1 auxiliary file: ./Chapters/conclusion.aux
+The style file: hunsrt.bst
+A level-1 auxiliary file: ./Appendicies/app_glossary.aux
+Database file #1: thesis.bib
+Warning--empty journal in Muhlbeier2013
+Warning--empty author and editor in handbook
+Warning--empty publisher in handbook
+You've used 12 entries,
+            1835 wiz_defined-function locations,
+            541 strings with 6390 characters,
+and the built_in function-call counts, 3175 in all, are:
+= -- 218
+> -- 228
+< -- 1
++ -- 81
+- -- 69
+* -- 282
+:= -- 540
+add.period$ -- 35
+call.type$ -- 12
+change.case$ -- 11
+chr.to.int$ -- 0
+cite$ -- 15
+duplicate$ -- 122
+empty$ -- 271
+format.name$ -- 69
+if$ -- 653
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 11
+newline$ -- 86
+num.names$ -- 11
+pop$ -- 35
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 36
+stack$ -- 0
+substring$ -- 166
+swap$ -- 14
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 22
+width$ -- 14
+write$ -- 156
+(There were 3 warnings)

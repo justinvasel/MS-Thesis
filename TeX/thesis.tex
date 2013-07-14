@@ -1,0 +1,252 @@
+%-----------------------------------------------------------------------------
+%
+%          PHYSICS  M.S.     THESIS
+%          JUSTIN A. VASEL
+%
+%          This began as the template offered by the University of Minnesota, 
+%          but I've made a few changes here and there...  
+%
+%          -->  thesis.tex
+%
+%-----------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------------
+%    //  P R E A M B L E
+%===============================================================================
+	\documentclass[12pt, twoside, fleqn]{mnthesis}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%
+	%   //  PACKAGES        %
+	%%%%%%%%%%%%%%%%%%%%%%%%%
+		% // EPS Files
+			\usepackage{epsfig}
+			\usepackage{epic}
+			\usepackage{eepic}
+
+		% // Graphics and Figures
+			\usepackage{graphicx}
+			\usepackage{float}
+			\usepackage[font=small]{caption}
+			\usepackage{subcaption}
+			\usepackage{wrapfig}
+
+		% // TikZ
+			\usepackage[usenames,dvipsnames]{xcolor}
+			\usepackage{tikz}
+			\usetikzlibrary{decorations.pathmorphing,decorations.markings,trees}		% Needed for Feynman diagrams
+			\pgfdeclarelayer{background}
+			\pgfdeclarelayer{foreground}
+			\pgfsetlayers{background,main,foreground}
+
+		% // Tables
+			\usepackage{array}
+			\usepackage{multirow}
+			\usepackage{longtable}
+			\usepackage{booktabs}
+
+		% // Maths
+			\usepackage{amsmath}
+			\usepackage{amssymb}
+			\usepackage{mathrsfs}
+
+		% // HEP
+			\usepackage{braket}			% Dirac notation
+			\usepackage{hepparticles}	% Format particle processes
+			\usepackage{hepnames}		% Format particle names
+			%\usepackage{hepunits}		% Format HEP units
+
+		% // Hyperlinks
+			\usepackage[colorlinks=true, urlcolor=BrickRed, linkcolor=Black, citecolor=Black]{hyperref}		% href
+			\usepackage{url}			% Don't use, makes text unicode
+
+		% // Misc.
+			\usepackage[emulate=hepunits,sepfour=true,digitsep=comma]{siunitx}		% Handles unit formatting
+			\usepackage{lipsum}			% Generate Lorem Ipsum text
+			\usepackage{setspace}
+			\usepackage{titlesec}
+			\usepackage[leftmargin=2in,rightmargin=0in,vskip=0.5in]{quoting}
+			%\usepackage{indent first}
+			\usepackage{lettrine}
+			\usepackage{lineno}
+
+		% // Unknown
+			\usepackage{bigstrut}		% No idea what this does
+
+
+	%%%%%%%%%%%%%%%%%%%%%%
+	%   //  FONTS        %
+	%%%%%%%%%%%%%%%%%%%%%%
+
+		% // fontenc may be redundant. fontspec needed to use system fonts
+		\usepackage[T1]{fontenc}
+		\usepackage{fontspec}
+		\usepackage{anyfontsize}
+
+		% // Required in XeLaTeX to make system fonts have TeX ligatures
+		%\defaultfontfeatures{Ligatures=TeX}
+
+		% // Set the default document font to `Baskerville'
+		%\setmainfont{Baskerville}
+		\setmainfont[Mapping=tex-text,Ligatures={Historical}]{Adobe Caslon}
+
+		% // DEFINE \neue as `Helvetica Neue'
+		% // DEFINE \light as `Helvetica Neue UltraLight'
+		% // DEFINE \minion as `Minion Pro'
+		%\newfontfamily\garamond[]{Goudy Old Style}
+		\newfontfamily\garamond[]{Medio}
+		\newfontfamily\neue[]{Helvetica Neue}
+		\newfontfamily\light[]{Helvetica Neue UltraLight}
+		\newfontfamily\minion[]{Minion Pro}
+		\newfontfamily\caslon[]{Adobe Caslon Pro}
+		\newfontfamily\bask[]{Baskerville}
+
+		% // Custom formatting for chapter titles
+		\titleformat{\chapter}[display]{\nolinenumbers \raggedright \linespread{0.5} \huge}{\chaptertitlename\ \vspace{0.25in} \thechapter}{0pt}{\fontsize{40}{50}\selectfont}
+		
+		% // Custom formatting for captions
+		\DeclareCaptionLabelFormat{smallcaps}{\normalsize \minion \textsc{#1 #2}}
+		\captionsetup[figure]{name=Fig.}
+		\captionsetup{labelformat=smallcaps, labelfont=bf, labelsep=period}
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%
+	%   //  GRAPHICS     %
+	%%%%%%%%%%%%%%%%%%%%%%
+		
+		% // Set path to look for images and graphics extension types
+		\graphicspath{ {../images/}{../images/Intro/}{../images/Neutrinos/}{../images/Supernovae/}{../images/Snews/}{../images/Halo/}{../images/Conclusion/} }
+		\DeclareGraphicsExtensions{.eps,.pdf,.png}
+		
+		
+		
+	%%%%%%%%%%%%%%%%%%%%%%
+	%   //  OTHER        %
+	%%%%%%%%%%%%%%%%%%%%%%
+
+		% // Pull in custom definitions
+		\input{my_definitions}
+
+		% // Set linespacing for document
+		\linespread{1.3}
+
+		% // Algin all math environs to left side
+		\setlength{\mathindent}{0cm}
+
+
+
+
+%-------------------------------------------------------------------------------
+%    //  B E G I N   D O C U M E N T
+%===============================================================================
+	\begin{document}
+	
+	% // Decoration for Feynman digram symbols
+	\tikzset{
+	    photon/.style={
+		    decorate, 
+		    decoration={snake}, 
+		    draw=red
+		},
+	    fermion-in/.style={
+	    		draw=black, 
+			postaction={decorate},
+	        decoration={
+	        		markings,
+				mark=at position .55 with {\arrow[draw=black]{<}}
+			}
+		},
+		fermion-out/.style={
+	    		draw=black, 
+			postaction={decorate},
+	        decoration={
+	        		markings,
+				mark=at position .55 with {\arrow[draw=black]{>}}
+			}
+		},
+	    gluon/.style={
+	    		decorate, 
+			draw=magenta,
+	        decoration={
+	        		coil,
+				amplitude=4pt, 
+				segment length=5pt
+			}
+		} 
+	}
+	
+	% // Show all cite & un-cited references
+	%\nocite{*}
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%   //  BUILD DOCUMENT        %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		%\frontmatter		
+		% // Frontmatter
+			\include{./Frontmatter/title}
+
+		%\mainmatter
+		% // Background
+			%\linenumbers
+			
+			\cleardoublepage % // Ensures each chapter starts on a right-handed page
+			\include{./Chapters/intro}
+			
+			\cleardoublepage
+			\include{./Chapters/neutrinos}
+			
+			\cleardoublepage
+			\include{./Chapters/supernovae}
+
+		% // HALO
+			\cleardoublepage
+			\include{./Chapters/snews}
+			
+			\cleardoublepage
+			\include{./Chapters/halo}
+			
+			\cleardoublepage
+			\include{./Chapters/halo2}
+
+		% // Conclusion
+			\cleardoublepage
+			\include{./Chapters/conclusion}
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%   //  BIBLIOGRAPHY          %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		% // Style provided by the University of Minnesota
+		\bibliographystyle{hunsrt}
+
+		% // Read BibTeX file
+		\bibliography{thesis}
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%   //  APPENDICES            %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		\appendix
+		\include{./Appendicies/app_glossary}
+
+
+
+
+
+%-------------------------------------------------------------------------------
+%    //  E N D   D O C U M E N T
+%===============================================================================
+	\end{document}
+
+
+
+
+

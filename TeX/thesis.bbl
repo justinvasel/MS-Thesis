@@ -1,0 +1,103 @@
+\begin{thebibliography}{10}
+
+\begin{minipage}{\textwidth}
+\bibitem{PDG}
+J.~et.~al. Beringer.
+\newblock {Review of Particle Physics (RPP)}.
+\newblock {\em Phys.Rev.}, D86:010001, 2012.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{proton_mass}
+P.~J. {Mohr}, B.~N. {Taylor}, and D.~B. {Newell}.
+\newblock {CODATA recommended values of the fundamental physical constants:
+  2010}.
+\newblock {\em Reviews of Modern Physics}, 84:1527--1605, October 2012,
+  1203.5425.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{first_nu_detection}
+C.~L. {Cowan}, Jr., F.~{Reines}, F.~B. {Harrison}, H.~W. {Kruse}, and A.~D.
+  {McGuire}.
+\newblock {Detection of the Free Neutrino: A Confirmation}.
+\newblock {\em Science}, 124:103--104, July 1956.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{kii1987a}
+K.~Hirata, T.~Kajita, and M.~Koshiba.
+\newblock {Observation of a neutrino burst from the supernova SN1987A.}
+\newblock {\em Physical Review \ldots}, 58(14):1490--1493, April 1987.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{imb_1987a}
+R.~Bionta, G.~Blewitt, C.~Bratton, D.~Casper, A.~Ciocio, R.~Claus, B.~Cortez,
+  M.~Crouch, S.~Dye, S.~Errede, G.~Foster, W.~Gajewski, K.~Ganezer,
+  M.~Goldhaber, T.~Haines, T.~Jones, D.~Kielczewska, W.~Kropp, J.~Learned,
+  J.~LoSecco, J.~Matthews, R.~Miller, M.~Mudan, H.~Park, L.~Price, F.~Reines,
+  J.~Schultz, S.~Seidel, E.~Shumard, D.~Sinclair, H.~Sobel, J.~Stone, L.~Sulak,
+  R.~Svoboda, G.~Thornton, J.~van~der Velde, and C.~Wuest.
+\newblock {Observation of a neutrino burst in coincidence with supernova 1987A
+  in the Large Magellanic Cloud}.
+\newblock {\em Physical Review Letters}, 58(14):1494--1496, April 1987.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{baksan1987a}
+E.~N. {Alekseev}, L.~N. {Alekseeva}, V.~I. {Volchenko}, and I.~V.
+  {Krivosheina}.
+\newblock {Possible detection of a neutrino signal on February 23, 1987 with
+  the Baksan underground scintillation telescope of the Nuclear Research
+  Institute of the Soviet Academy of Sciences}.
+\newblock {\em Pisma v Zhurnal Eksperimentalnoi i Teoreticheskoi Fiziki},
+  45:461--464, May 1987.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{Muhlbeier2013}
+T.~M\"{u}hlbeier, H~Nunokawa, and R~Zukanovich Funchal.
+\newblock {Revisiting the Triangulation Method for Pointing to Supernova and
+  Failed Supernova with Neutrinos}.
+\newblock page~6, April 2013, 1304.5006.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{sn_rates}
+G.~A. Tammann, W.~Loeffler, and A.~Schroeder.
+\newblock {The Galactic supernova rate}.
+\newblock {\em The Astrophysical Journal Supplement Series}, 92:487, June 1994.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{Engel2003}
+J.~Engel, G.~C. McLaughlin, and C.~Volpe.
+\newblock {What Can Be Learned with a Lead-Based Supernova-Neutrino Detector?}
+\newblock {\em Physical Review D}, 67(1):17, September 2002, 0209267.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{Shantz2010}
+Taylor~C Shantz.
+\newblock {\em {Design and Construction of the Helium and Lead Observatory for
+  Supernova Neutrinos}}.
+\newblock Master of science (m.sc.), Laurentian University, 2010.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{Search2011}
+Home Search, Collections Journals, About Contact, My~Iopscience, New~J Phys,
+  and I~P Address.
+\newblock {Full simulation of the Sudbury Neutrino Observatory proportional
+  counters}.
+\newblock {\em New Journal of Physics}, 073006(13), 2011.
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\bibitem{handbook}
+{\em {SNOLAB User’s Handbook, Rev. 2}}.
+\newblock 2006.
+\end{minipage}
+
+\end{thebibliography}

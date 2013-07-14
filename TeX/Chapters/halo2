@@ -1,0 +1,35 @@
+%-----------------------------------------------------------------------------
+%
+%          PHYSICS  M.S.     THESIS
+%          JUSTIN A. VASEL
+%
+%          This began as the template offered by the University of Minnesota, 
+%          but I've made a few changes here and there...  
+%
+%          -->  halo2.tex
+%
+%-----------------------------------------------------------------------------
+
+
+\chapter{The Road to Full Operation}
+	\label{halo2_chapter}
+
+	\begin{quoting}
+		\noindent \large ``Astronomically Patient" \normalsize
+
+		--- The HALO Collaboration
+	\end{quoting}
+
+	
+	\section{DAQ Software Development}
+		\filler
+	\section{Detector Calibration}
+		\filler
+	\section{SNEWS Trigger Implementation}
+		\filler
+	\section{Current Status and Future Work}
+		\filler
+
+
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------

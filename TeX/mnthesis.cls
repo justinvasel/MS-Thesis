@@ -335,9 +335,6 @@
     \vskip 4ex plus 2ex minus 2ex {
       \vspace{0.2in}
       \centering\it
-      \ifdraft {
-        DRAFT VERSION CREATED ON \uppercase\expandafter{\today}\\
-      }\else 
         \small\sc
         {\minion A Thesis Submitted to the Faculty of \\
         the Graduate School of the University of Minnesota \\
@@ -352,15 +349,14 @@
         \nobreak
         \vskip 2ex plus 2ex minus 2ex
         \small\sc
-        {\minion in Partial Fulfillment of the Requirements \\
-        for the Degree of \normalsize \textbf{Master of Science}}
+        {\minion in Partial Fulfillment of the Requirements
+        for the Degree of \\ \large \textbf{Master of Science}}
         \vskip 1ex plus 1ex minus 1ex
+        \vspace{0.3in}
         \normalsize
-        \normalfont
-        \rm \@director\par
+        \minion\textsc{Advisor:} \rm\normalfont \@director\par
         \vskip 1ex plus 1ex minus 1ex
-        \@month, \@year\\
-      \fi %close ifdraft
+        \@month{} \@year\\
     }
   }
   \tikzremember{bgend}}

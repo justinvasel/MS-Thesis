@@ -26,41 +26,139 @@
 	
 	\section{Supernova Taxonomy}
 		Supernova taxonomy is not an exact science. They are classified merely by the appearance of their spectra. In that respect, supernovae are to the astronomer as insects are to the biologist, rocks to the geologist, or artifacts to the archeologist. The classification of supernovae is---as Ernest Rutherford would say---stamp collecting. 
+		Generally speaking there are two types of supernova: Type I and Type II. The difference between them is that the spectra of Type II supernovae contain very prominant hydrogen lines, while those of Type I do not. Furthermore the Type I supernovae are divided into two types depending on whether their spectra contain silicon (Type Ia) or not. The latter of these---devoid of hydrogen and devoid of silicon---are again divided in two, depending on whether they're helium rich (Type Ib) or helium poor (Type Ic).
 
-		Generally speaking there are two types of supernova: Type I and Type II. The difference between them is that the spectra of Type II supernovae contain very prominant hydrogen lines, while those of Type I do not. Furthermore the Type I supernovae are divided into two types depending on whether their spectra contain silicon (Type Ia) or not. The latter of these---devoid of hydrogen and devoid of silicon---are again divided in two, depending on whether they're helium rich (Type Ib) or helium poor (Type Ic). 
+		Type Ia supernovae are perhaps the most interesting of the three Type I supernovae. The situation in which they are thought to occur is that of a white dwarf in binary orbit with a companion star. Matter from the companion accretes onto the white dwarf until the Chandrasekhar limit of \ 1.4 \emph{M}$_\odot$ is reached. At that point the degeneracy pressure is overcome by gravity, causing the white dwarf to collapse and then explode when its carbon ignites. The explosion is so catastrophic that there is likely no remnant left in its wake. What's interesting about Type Ia supernovae is that they all explode at the same mass, 1.4 \emph{M}$_\odot$. The consistency of their erruptions---and, therefore, their spectra---make them ideal standard candles, allowing the astronomer to calculate intergalactic distances simply by measuring the peak brightness of their light curve.
 
-		Type Ia supernovae are perhaps the most interesting of the three Type I supernovae. The situation in which they are thought to occur is that of a white dwarf in binary orbit with a companion star. Matter from the companion accretes onto the white dwarf until the Chandrasekhar limit of \ 1.4 \emph{M}$_\odot$ is reached. At that point the degeneracy pressure is overcome by gravity, causing the white dwarf to collapse and then explode when its carbon ignites. The explosion is so catastrophic that there is likely no remnant left in its wake. 
+		% \begin{center}
+		% 	\begin{tikzpicture}[
+		% 	  font=\sffamily,
+		% 	  every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
+		% 	  source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+		% 	  process/.style={draw,thick,circle,fill=blue!20},
+		% 	  sink/.style={source,fill=green!20},
+		% 	  datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
+		% 	  dots/.style={gray,scale=2},
+		% 	  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+		% 	  every node/.style={align=center}]
 
-		What's interesting about Type Ia supernovae is that they all explode at the same mass, 1.4 \emph{M}$_\odot$. The consistency of their erruptions---and, therefore, their spectra---make them ideal standard candles, allowing the astronomer to calculate intergalactic distances simply by measuring the peak brightness of their light curve.
+		% 	  % Position the nodes using a matrix layout
+		% 	  \matrix{
+		% 	    \node[source] (hisparcbox) {electronics};
+		% 	      \& \node[process] (daq) {DAQ}; \& \\
+
+		% 	    \& \node[datastore] (buffer) {buffer}; \& \\
+
+		% 	    \node[datastore] (storage) {storage};
+		% 	      \& \node[process] (monitor) {monitor};
+		% 	      \& \node[sink] (datastore) {datastore}; \\
+		% 	  };
+
+		% 	  % Draw the arrows between the nodes and label them.
+		% 	  \draw[to] (hisparcbox) -- node[midway,above] {raw events}
+		% 	      node[midway,below] {level 0} (daq);
+		% 	  \draw[to] (daq) -- node[midway,right] {raw event data\\level 1} (buffer);
+		% 	  \draw[to] (buffer) --
+		% 	      node[midway,right] {raw event data\\level 1} (monitor);
+		% 	  \draw[to] (monitor) to[bend right=50] node[midway,above] {events}
+		% 	      node[midway,below] {level 1} (storage);
+		% 	  \draw[to] (storage) to[bend right=50] node[midway,above] {events}
+		% 	      node[midway,below] {level 1} (monitor);
+		% 	  \draw[to] (monitor) -- node[midway,above] {events}
+		% 	      node[midway,below] {level 1} (datastore);
+		% 	\end{tikzpicture}
+		% \end{center}
+
+		\begin{figure}[H]
+			\begin{center}
+				\begin{tikzpicture}[every path/.style={>=latex}, type/.style={draw,rectangle,fill=red!20,anchor=west}]
+				  \node[type] 	(SN) at (0,0) {SN};
+				  \node[type]     (i) at (3,2.25)  { Type I};
+				  \node[type] 	(ii) at (3,-2.25) { Type II};
+
+				  \node[type] 	(ia) at (11,3) { Type Ia};
+				  \node[type] 	(ibc) at (7,0.75) { Type Ib,Ic};
+				  \node[type] 	(ib) at (11,1.5) { Type Ib};
+				  \node[type] 	(ic) at (11,0) { Type Ic};
+
+				  \node[type] 	(iil) at (11,-1.5) { Type II-L};
+				  \node[type] 	(iip) at (11,-3) { Type II-P};
+
+				  \draw[->] (SN) edge node[sloped, anchor=center, above, text width=1.0cm] {\color{light-gray} \footnotesize no H}(i);
+				  \draw[->] (SN) edge node[sloped, anchor=center, below, text width=0.8cm] {\color{light-gray} \footnotesize H}(ii);
+				  \draw[->] (i)  edge node[sloped, anchor=center, above, text width=0.8cm] {\color{light-gray} \footnotesize Si}(ia);
+				  \draw[->] (i)  edge node[sloped, anchor=center, below, text width=1.0cm] {\color{light-gray} \footnotesize no Si}(ibc);
+				  \draw[->] (ibc)  edge node[sloped, anchor=center, above, text width=1.0cm] {\color{light-gray} \footnotesize He}(ib);
+				  \draw[->] (ibc)  edge node[sloped, anchor=center, below, text width=1.0cm] {\color{light-gray} \footnotesize no He}(ic);
+				  \draw[->] (ii)  edge node[sloped, anchor=center, above, text width=0.8cm] {\color{light-gray} \footnotesize Linear}(iil);
+				  \draw[->] (ii)  edge node[sloped, anchor=center, below, text width=0.8cm] {\color{light-gray} \footnotesize Plateau}(iip);
+				\end{tikzpicture}
+			\end{center}
+			\caption[Classification of Supernovae]{\bf Classification of supernovae.\rm} \label{fig:sn_types}
+		\end{figure}
 
 		The Type II supernovae are also divided into two groups and are distinguished by the shape of their light curve. The Type II-L has a light curve that decays rather linearly after maximum brightness while the Type II-P has one that plateaus after maximum brightness. Stars that become Type II supernovae are massive. As a result, they tend to live relatively short lives, making them more likely to be found in the arms of spiral galaxies where active star formation is occuring. Their large mass eventually drives a collapse of the star's core that will blow the outer layers of the star away and leave behind a neutron star or a black hole.
-
 		These Type II supernovae will be the focus of the rest of the chapter and are the motivation behind this thesis and the HALO experiment. Throughout the rest of this thesis, I will make no further distinction between the Type II-L and Type II-P supernovae, but will instead refer to them collectively as ``core-collapse'' supernovae.
+
 	\section{Shell Burning}
-		Stars that are sufficiently massive (\emph{M} $>$ 8 \emph{M}$_\odot$) will undergo a brief period at the end of their lives in which a series of successfive nuclear reactions occur within the core. When the hydrogen fuel is exhausted, the star contracts until temperatures in the core are high enough to fuse helium. Once helium is exhausted, the star contracts until carbon-burning beings. This process continues, the core burns through successively heavier elements, and the duration of each burning stage decreases by several orders of magnitude. The specifics of this process depend intimately on the mass of the star. An example for a 15 \emph{M}$_\odot$ star is summarized in \TAB \ref{table:shell_burning}.
+		Stars that are sufficiently massive (\emph{M} $>$ 8 \emph{M}$_\odot$) will undergo a brief period at the end of their lives in which a series of successfive nuclear reactions occur within the core. When the hydrogen fuel is exhausted, the star contracts until temperatures in the core are high enough to fuse helium. Once helium is exhausted, the star contracts again until carbon-burning beings. This process continues, the core burns through successively heavier elements, and the duration of each burning stage decreases by several orders of magnitude. The specifics of this process depend intimately on the mass of the star. An example for a 15 \emph{M}$_\odot$ star is summarized in \TAB \ref{table:shell_burning}.
 
 		\begin{table}[H]
 		\centering
-		\caption[Shell Burning Process for a 15 \emph{M}$_\odot$ Star.]{\bf Shell Burning Process for a 15 \emph{M}$_\odot$ Star.\rm }
+		\caption[Shell Burning Process for a 15 \emph{M}$_\odot$ Star]{\bf Shell Burning Process for a 15 \emph{M}$_\odot$ Star\rm\cite{Woosley2006}.}
 		\label{table:shell_burning}
-			\begin{tabular}{lllllll}
+			\begin{tabular}{lcllccc}
 				\toprule
 				Stage & Time Scale & Fuel & Product & Temp. & Density & Neutrino Loss\\
 				 & & & & (\SI{e9}{\kelvin}) & (\si{\gram\per\cubic\centi\metre}) & (Solar units) \\
 				\midrule
-				Hydrogen & \SI{11}{\mega\s} & H & He & 0.035 & 5.8 & 1800 \\
-				Helium & \SI{2}{\mega\s} & He & C,O & 0.18 & 1390 & 1900 \\
+				Hydrogen & 11 My & H & He & 0.035 & 5.8 & 1,800 \\
+				Helium & 2 My & He & C,O & 0.18 & 1,390 & 1,900 \\
+				Carbon & 2,000 y & C & Ne,Mg & 0.81 & \num{2.8e5} & \num{3.7e5} \\
+				Neon & 0.7 y & Ne & O,Mg & 1.6 & \num{1.2e7} & \num{1.4e8} \\
+				Oxygen & 2.6 y & O,Mg & Si, ... & 1.9 & \num{8.8e6} & \num{9.1e8} \\
+				Silicon & 18 d & Si, ... & Fe, ... & 3.3 & \num{4.8e7} & \num{1.3e11} \\
+				Iron core & $\sim$1 s & Fe, ... & Neutron& $>7.1$ & $>$ \num{7.3e9} & $>$ \num{3.6e15} \\
+				& & & Star & & & \\
 				\bottomrule
 			\end{tabular}
 	\end{table}
 
-		The nuclear burning history of this process is contained within shells of unspent fuel that surround the core, producing the characteristic onion-like structure of progressively heavier elements.  
+		The nuclear burning history of this process is contained within shells of unspent fuel that surround the core, producing a characteristic onion-like structure of progressively heavier elements.  
 	\section{Core Collapse}
 		\filler
 	\section{Rebound}
 		\filler
 	\section{Remnants}
 		\filler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %-----------------------------------------------------------------------------

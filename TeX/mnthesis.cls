@@ -317,7 +317,7 @@
       anchor=south,
       fill=black!85,
       text = white,
-      minimum width=\paperwidth,
+      minimum width=1.3\paperwidth,
       minimum height=0.57\paperheight] at (current page.south) {};
     \end{pgfonlayer}{background}
   \end{tikzpicture}

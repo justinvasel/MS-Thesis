@@ -39,6 +39,7 @@
 				\pgfdeclarelayer{background}
 				\pgfdeclarelayer{foreground}
 				\pgfsetlayers{background,main,foreground}
+			\usepackage{pgfplots}
 
 		% // Tables
 			\usepackage{array}
@@ -71,6 +72,8 @@
 			%\usepackage{indent first}
 			\usepackage{lettrine}
 			\usepackage{lineno}
+			\usepackage{listings}
+			%\usepackage{minted}
 
 		% // Unknown
 			\usepackage{bigstrut}		% No idea what this does
@@ -81,16 +84,18 @@
 	%%%%%%%%%%%%%%%%%%%%%%
 
 		% // fontenc may be redundant. fontspec needed to use system fonts
-		\usepackage[T1]{fontenc}
+		%\usepackage[T1]{fontenc}
 		\usepackage{fontspec}
 		\usepackage{anyfontsize}
+		\usepackage[utf8x]{inputenc}
+		%\usepackage{bera}
 
 		% // Required in XeLaTeX to make system fonts have TeX ligatures
 		%\defaultfontfeatures{Ligatures=TeX}
 
 		% // Set the default document font to `Baskerville'
 		%\setmainfont{Baskerville}
-		\setmainfont[Mapping=tex-text,Ligatures={Historical}]{Adobe Caslon}
+		\setmainfont[Ligatures=TeX]{Adobe Caslon}
 
 		% // DEFINE \neue as `Helvetica Neue'
 		% // DEFINE \light as `Helvetica Neue UltraLight'
@@ -135,7 +140,7 @@
 		\linespread{1.3}
 
 		% // Algin all math environs to left side
-		\setlength{\mathindent}{0cm}
+		\setlength{\mathindent}{1cm}
 
 
 
@@ -202,8 +207,8 @@
 	%   //  APPENDICES            %
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		\appendix
-		\include{./Appendicies/app_glossary}
+		%\appendix
+		%\include{./Appendicies/app_glossary}
 
 
 

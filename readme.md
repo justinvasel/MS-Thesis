@@ -1,6 +1,8 @@
 Justin's Master Thesis
 =============
 
+### Under The Hood: Preparing the Helium and Lead Observatory for Full Operation
+
 **The code is currently a little sloppy and poorly documented.** Major revisions will be coming soon. Check back...
 
 This is the source code for my M.S. Thesis.

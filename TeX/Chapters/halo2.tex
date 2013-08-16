@@ -24,6 +24,8 @@
 
 	My work at HALO was not singularly data analysis nor theoretical research nor computer simulation. My contribution to the experiment was more vague and arguably more involved: to help the collaboration move through this laundry list of tasks in a timely manner so that HALO will be ready to serve its purpose before the next galactic supernova occurs. In this chapter, I will discuss my involvement in preparing the Helium and Lead Observatory for full operation.
 
+	
+	%% SECTION : INDENTIFYING FAULTY 3HE COUNTERS
 	\section{Identifying Faulty{}\he Counters}
 		As mentioned in \CHP \ref{halo_chapter}, the{}\he proportional counters were donated to HALO by the decommissioned SNO experiment. Only 128 counters are required for HALO, which left us with a couple dozen extra to be kept on reserve in case a counter in the detector for whatever reason needs to be replaced. The neutron spectrum for each counter currently in the detector had been carefully examined to ensure the active counters were behaving as expected, but the extra counters had not yet been so thoroughly vetted. It was known that some of the counters were filled with $^4$He gas, which cannot be used in the detection of neutrons. The SNO experiment used these as a control group and they got mixed in with the{}\he counters when they were delivered to HALO. 
 
@@ -46,6 +48,8 @@
 
 		This did not make a difference; the spectra still appeared deformed. Since we tried improving the connection with conductive grease, others have attempted to measure how the spring compression changes over time. They found that the springs do tend to loose compression very quickly. A spring compressed by \SI{4}{\milli\metre} lost much of its compression within the first few minutes and approached a value of \SI{2}{\milli\metre} after a few hours. The manufacturer claims that \SI{2}{\milli\metre} is the amount of compression needed to make a strong electrical contact, so these results initially were not too concerning. However, over a longer time scale of about a week, the springs lost an addition \SI{0.5}{\milli\metre} of compression\cite{spring_test}. It is not clear whether this is the cause of the deformed neutron spectra, but it will continue to be investigated.
 
+	
+	%% SECTION : DAQ SOFTWARE DEVELOPMENT
 	\section{DAQ Software Development}
 	\label{sec:orca_development}
 		The HALO detector and its related hardware is monitored and controlled by a software package called ORCA (Object-oriented Real-time Control and Acquisition), developed by Mark Howe at the University of North Carolina at Chapel Hill.\footnote{http://orca.physics.unc.edu/$\sim$markhowe/} ORCA is written in Objective-C using the Cocoa framework and Apple Developer Tools. It is a powerful application, providing native support for a wide range of devices, data readout and analysis tools, and the ability to write custom processes within the software. Being well-versed on the Apple OS X operating system, it made sense for me to act as the liaison between HALO and ORCA development. 
@@ -125,7 +129,8 @@
 
 		There is another portion of the HALO object in ORCA that displays a cartoon graphic of the detector. It is a simple graphic, consisting of circles that represent each \he counter arranged on the screen in the same way they're arranged physically. Each circle is filled with a color that corresponds to the number of counts it has had during the current run. This view---which we call the DetectorView (\FIG \ref{fig:orca_dev_3})---is a great diagnostic tool, allowing us to immediately notice if any of the 128 detectors are acting differently from the rest. Clicking on an individual circle reveals some information about that particular detector. Originally, it only listed the shaper card and channel. I extended this to display all of the information available in the hardware map. Now, we have the ability to choose any \he detector at random and instantly know everything that it is connected to. This will make troubleshooting detector-related problems much easier.
 
-
+	
+	%% SECTION : NETWORK DESIGN
 	\section{Network Design}
 		HALO is intended to operate for decades. Once it is in its final state and operating normally, there will not often be people stationed underground near the hardware. For this reason in particular, and because it's just good form generally, it is important that everything is organized in a common sense way and well-documented. As we began to add more computers to the set up, it became clear that a formal network organizational structure was necessary. 
 
@@ -151,6 +156,8 @@
 
 		I chose this network scheme to be simple and easy to remember. It is also extensible. In the event that a new piece of hardware is installed in the future, it can easily be assigned an IP and a hostname that conforms to this standard. Security is a concern for these devices since they have a link to the Internet that will be used for remote monitoring. Besides that one point of entry, the network is isolated on its own subnet with port forwarding carefully configured.
 
+	
+	%% SECTION : REMOTE MONITORING
 	\section{Remote Monitoring}
 		HALO is designed to be low-maintenance. It can run continuously for long periods of time automatically. This allows for experimenters to spend most of their time on surface working on other things, rather than spending valuable time under ground running the detector. Despite the automated capacity of HALO, it is still essential to monitor the behavior of the detector in order to identify any problems that arise that would prevent HALO from triggering on a supernova signal when it comes. Such monitoring can be performed remotely, however, eliminating the need to spend time underground when the detector is functioning normally.
 
@@ -170,74 +177,81 @@
 
 		Bearing those guidelines in mind, I developed a system in which Perl scripts on local machines run at specified intervals to poll the hardware and push the response into a database. Information from the database is then served to a web interface through PHP and Javascript. The shifter can then view the relevant information without having any control over the experiment. I will now describe the system in detail.
 
+
+		%% SUBSECTION : DATA SCRAPING
 		\subsection{Data Scraping}
-		Many devices involved with running HALO are connected to the private ethernet network and are accessible in some way, whether by SNMP (Simple Network Management Protocol) or telnet or some other protocol. The trick then is to extract desired information from each device automatically. This is something a script can do quite easily. For example, the VME crates are the interface between the shaper cards and ORCA, and are accessible through SNMP. A simple command is all that's necessary to extract any piece of information provided by the crate. Here's an example of some of the information it can provide us:
-		\begin{verbatim}
-		  outputSwitch.U0 = INTEGER: ON(1)
-		  outputSwitch.U1 = INTEGER: ON(1)
-		  outputSwitch.U5 = INTEGER: ON(1)
-		  outputVoltage.U0 = Opaque: Float: 5.000000 V
-		  outputVoltage.U1 = Opaque: Float: 12.000000 V
-		  outputVoltage.U5 = Opaque: Float: 12.000000 V
-		  outputAdjustVoltage.U0 = INTEGER: 0
-		  outputAdjustVoltage.U1 = INTEGER: 0
-		  outputAdjustVoltage.U5 = INTEGER: 0
-		  outputCurrent.U0 = Opaque: Float: 115.000000 A
-		  outputCurrent.U1 = Opaque: Float: 23.000000 A
-		  outputCurrent.U5 = Opaque: Float: 23.000000 A
-		\end{verbatim}
-		I wrote a simple Perl script that uses the \verb$snmpget$ command to extract the information we're interested in monitoring. The script then arranges that information in a JSON-formatted string and pushes it to a database, but those details will be examined in the next section.
+			Many devices involved with running HALO are connected to the private ethernet network and are accessible in some way, whether by SNMP (Simple Network Management Protocol) or telnet or some other protocol. The trick then is to extract desired information from each device automatically. This is something a script can do quite easily. For example, the VME crates are the interface between the shaper cards and ORCA, and are accessible through SNMP. A simple command is all that's necessary to extract any piece of information provided by the crate. Here's an example of some of the information it can provide us:
+			\begin{verbatim}
+			  outputSwitch.U0 = INTEGER: ON(1)
+			  outputSwitch.U1 = INTEGER: ON(1)
+			  outputSwitch.U5 = INTEGER: ON(1)
+			  outputVoltage.U0 = Opaque: Float: 5.000000 V
+			  outputVoltage.U1 = Opaque: Float: 12.000000 V
+			  outputVoltage.U5 = Opaque: Float: 12.000000 V
+			  outputAdjustVoltage.U0 = INTEGER: 0
+			  outputAdjustVoltage.U1 = INTEGER: 0
+			  outputAdjustVoltage.U5 = INTEGER: 0
+			  outputCurrent.U0 = Opaque: Float: 115.000000 A
+			  outputCurrent.U1 = Opaque: Float: 23.000000 A
+			  outputCurrent.U5 = Opaque: Float: 23.000000 A
+			\end{verbatim}
+			I wrote a simple Perl script that uses the \verb$snmpget$ command to extract the information we're interested in monitoring. The script then arranges that information in a JSON-formatted string and pushes it to a database, but those details will be examined in the next section.
 
-		ORCA has built within it a method for extracting relevant information as well. A socket connection can be opened that allows a script to call any function from within ORCA. This allows us to extract details like the current voltage on each HV channel, the thresholds and gains set on each shaper channel, and any other ADC value that we choose. I have not yet written the scripts that will scrape data in this way, but it is a near-future plan. Additionally, ORCA can send run-related information to a database automatically. Much of the information need for shift reports can be gathered this way. Examples include run number, elapsed run time, counts on each detector, alarms, and the status log to name a few.
+			ORCA has built within it a method for extracting relevant information as well. A socket connection can be opened that allows a script to call any function from within ORCA. This allows us to extract details like the current voltage on each HV channel, the thresholds and gains set on each shaper channel, and any other ADC value that we choose. I have not yet written the scripts that will scrape data in this way, but it is a near-future plan. Additionally, ORCA can send run-related information to a database automatically. Much of the information need for shift reports can be gathered this way. Examples include run number, elapsed run time, counts on each detector, alarms, and the status log to name a few.
 
-		The scripts that gather the data from all these sources can be called in a couple of ways. Currently, they are run automatically every two minutes. But, they can also be called directly from the web interface if the user wants to see the updated information immediately. I chose the interval time of two minutes arbitrarily during development, so it will likely change if the temporal resolution is too low to produce a confident shift report.
+			The scripts that gather the data from all these sources can be called in a couple of ways. Currently, they are run automatically every two minutes. But, they can also be called directly from the web interface if the user wants to see the updated information immediately. I chose the interval time of two minutes arbitrarily during development, so it will likely change if the temporal resolution is too low to produce a confident shift report.
 
+
+		%% SUBSECTION : DATABASE MANAGEMENT
 		\subsection{Database Management}
-		The information gathered by the data scrapers is pushed into a database. More specifically, a CouchDB\footnote{CouchDB was invented by Apache: http://couchdb.apache.org/.}. A CouchDB is a schema-less database that uses a RESTful HTTP API\footnote{RESTful APIs are controlled through HTTP methods like GET, PUT, POST, and DELETE.} for the storage and retrieval of information. The most fundamental unit in a CouchDB is called a document. A document is in some ways analogous to a table in an SQL database, only there are no predefined fields or field types. Instead, a document is simply a string formatted as JSON.
+			The information gathered by the data scrapers is pushed into a database. More specifically, a CouchDB\footnote{CouchDB was invented by Apache: http://couchdb.apache.org/.}. A CouchDB is a schema-less database that uses a RESTful HTTP API\footnote{RESTful APIs are controlled through HTTP methods like GET, PUT, POST, and DELETE.} for the storage and retrieval of information. The most fundamental unit in a CouchDB is called a document. A document is in some ways analogous to a table in an SQL database, only there are no predefined fields or field types. Instead, a document is simply a string formatted as JSON.
 
-		JSON (JavaScript Object Notation) is very similar to XML in that it consists of key-value pairs, but it is designed to be human readable. An example is shown in Listing \nolinebreak \ref{lst:json}. JSON-formatted data are very versatile and easily implemented into web code with pre-existing libraries. Each document in the CouchDB has associated with it an id (\verb$_id$) and a revision number (\verb$_rev$). When updating an entry in CouchDB, the previous entry is not deleted. Instead, the updated document is stored with the same \verb$_id$ the original had, but an incremented \verb$_rev$, allowing the user of the database to keep a history of the database as time goes on. In CouchDB, nothing is ever lost. 
+			JSON (JavaScript Object Notation) is very similar to XML in that it consists of key-value pairs, but it is designed to be human readable. An example is shown in Listing \nolinebreak \ref{lst:json}. JSON-formatted data are very versatile and easily implemented into web code with pre-existing libraries. Each document in the CouchDB has associated with it an id (\verb$_id$) and a revision number (\verb$_rev$). When updating an entry in CouchDB, the previous entry is not deleted. Instead, the updated document is stored with the same \verb$_id$ the original had, but an incremented \verb$_rev$, allowing the user of the database to keep a history of the database as time goes on. In CouchDB, nothing is ever lost. 
 
-		\begin{lstlisting}[language=json,firstnumber=1,label=lst:json,caption=\it A JSON Example.\rm \\ Here is a short list of neutrino observatories with some descriptive attributes. This format is both human and machine readable!]
-			{
-			  {
-			    "Name":"HALO",
-			    "Location":"Canada",
-			    "Type":"High-Z (Pb)"
-			  },
-			  {
-			    "Name":"Super-Kamiokande",
-			    "Location":"Japan",
-			    "Type":"Water Chernekov"
-			  }
-			}
-		\end{lstlisting}
+			\begin{lstlisting}[language=json,firstnumber=1,label=lst:json,caption=\it A JSON Example.\rm \\ Here is a short list of neutrino observatories with some descriptive attributes. This format is both human and machine readable!]
+				{
+				  {
+				    "Name":"HALO",
+				    "Location":"Canada",
+				    "Type":"High-Z (Pb)"
+				  },
+				  {
+				    "Name":"Super-Kamiokande",
+				    "Location":"Japan",
+				    "Type":"Water Chernekov"
+				  }
+				}
+			\end{lstlisting}
 
-		CouchDB's revision feature and its sans schema philosophy make it ideal for use in the HALO remote monitoring system. The revision-tracking will allow us to recall the state of the detector in the past if needed, and the lack of a rigid schema make storing new types of information painless. This flexibility will contribute to the goal of making the system extensible.
+			CouchDB's revision feature and its sans schema philosophy make it ideal for use in the HALO remote monitoring system. The revision-tracking will allow us to recall the state of the detector in the past if needed, and the lack of a rigid schema make storing new types of information painless. This flexibility will contribute to the goal of making the system extensible.
 
-		The last thing I'll mention about CouchDB for now is that it is not accessible through a command line or a custom protocol. Rather, it is accessible through HTTP. The CouchDB server creates a web server on the default port of 5984. To retrieve a document titled ``doc" from the database called ``db'', you can simply point your web browser to http://localhost:5984/db/doc and the result will be the contents of the document as a JSON string. This simple method of access makes it easy to retrieve documents from CouchDB with any programming language that supports basic HTTP requests. 
+			The last thing I'll mention about CouchDB for now is that it is not accessible through a command line or a custom protocol. Rather, it is accessible through HTTP. The CouchDB server creates a web server on the default port of 5984. To retrieve a document titled ``doc" from the database called ``db'', you can simply point your web browser to http://localhost:5984/db/doc and the result will be the contents of the document as a JSON string. This simple method of access makes it easy to retrieve documents from CouchDB with any programming language that supports basic HTTP requests. 
 
-		The data scrapers that gather information from the experimental hardware format the information as JSON before pushing it to the local CouchDB as a document. Conveniently, ORCA already includes native support for CouchDB. After writing an example data scraping script for the VME crates and setting up the databases, I had most of the basic infrastructure for the remote monitoring system in place. What remained was the development of a user interface.
+			The data scrapers that gather information from the experimental hardware format the information as JSON before pushing it to the local CouchDB as a document. Conveniently, ORCA already includes native support for CouchDB. After writing an example data scraping script for the VME crates and setting up the databases, I had most of the basic infrastructure for the remote monitoring system in place. What remained was the development of a user interface.
 
+		
+		%% SUBSECTION : A SIMPLE, YET POWERFUL USER INTERFACE
 		\subsection{A Simple, Yet Powerful User Interface}
-		I have been able to stay true to the guidelines I set for myself during the development of the data scrapers and the database. They're simple, they're sustainable, and they're extensible. The user interface was bound to be the more difficult task in these regards. It is very easy for web code to get messy and disorganized because there is a lot of it. To avoid this, I built the code very slowly, making sure that each part of the code was separate from the others. The code to pull documents from CouchDB was separate from the code that parses the resulting JSON response, which in turn was separate from the code that prints the information to the screen. In this way, the code is modular. This will make it easy to add new code in the future. It also makes understanding how the code works much easier.
+			I have been able to stay true to the guidelines I set for myself during the development of the data scrapers and the database. They're simple, they're sustainable, and they're extensible. The user interface was bound to be the more difficult task in these regards. It is very easy for web code to get messy and disorganized because there is a lot of it. To avoid this, I built the code very slowly, making sure that each part of the code was separate from the others. The code to pull documents from CouchDB was separate from the code that parses the resulting JSON response, which in turn was separate from the code that prints the information to the screen. In this way, the code is modular. This will make it easy to add new code in the future. It also makes understanding how the code works much easier.
 
-		The user interface is written in a combination of three languages commonly used in web programming. The core of the interface is written in PHP, a recursive acronym that stands for \it PHP: Hypertext Preprocessor\rm. PHP is a server-side scripting language; it gets executed on the server and the user is served the output. In this case, the PHP scripts are mainly used to request documents from the database. The JSON-formatted response is passed into the next layer of programming, Javascript, where it is parsed.
+			The user interface is written in a combination of three languages commonly used in web programming. The core of the interface is written in PHP, a recursive acronym that stands for \it PHP: Hypertext Preprocessor\rm. PHP is a server-side scripting language; it gets executed on the server and the user is served the output. In this case, the PHP scripts are mainly used to request documents from the database. The JSON-formatted response is passed into the next layer of programming, Javascript, where it is parsed.
 
-		Javascript, as opposed to PHP, is a client-side language. It is responsible for parsing the JSON received from CouchDB and performing functions on it (like formatting or calculations) before it is displayed to the user. I am using a popular Javascript library called jQuery\footnote{http://jquery.com/}, which provides a means of updating elements that have already been drawn on the web page. jQuery will allow the information on the page to be updated as the database is updated, providing the user with a nearly-live view of the detector parameters. 
+			Javascript, as opposed to PHP, is a client-side language. It is responsible for parsing the JSON received from CouchDB and performing functions on it (like formatting or calculations) before it is displayed to the user. I am using a popular Javascript library called jQuery\footnote{http://jquery.com/}, which provides a means of updating elements that have already been drawn on the web page. jQuery will allow the information on the page to be updated as the database is updated, providing the user with a nearly-live view of the detector parameters. 
 
-		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{monitoring_ui}
-			\caption[Prototype Remote Monitoring User Interface]{\bf Prototype remote monitoring user interface. \rm This early version of the remote monitoring tool displays a subset of the desired HALO information in a clean and easy to understand interface. The HALO DetectorView from ORCA is replicated in the lower left, although the colors which normally correspond to counts are temporarily randomized for testing purposes.}
-			\label{fig:mon_ui}
-		\end{figure}
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{monitoring_ui}
+				\caption[Prototype Remote Monitoring User Interface]{\bf Prototype remote monitoring user interface. \rm This early version of the remote monitoring tool displays a subset of the desired HALO information in a clean and easy to understand interface. The HALO DetectorView from ORCA is replicated in the lower left, although the colors which normally correspond to counts are temporarily randomized for testing purposes.}
+				\label{fig:mon_ui}
+			\end{figure}
 
-		The final programming tier in the user interface is simple HTML. This language defines the structure of the web page. It dictates where the content will be placed and how it will be styled. HTML is also client-side, however it is not considered a programming language. It cannot perform calculations or understand conditional statements; It is simply a markup language. The HTML elements are known as DOM nodes and are manipulated by jQuery to present dynamic content.
+			The final programming tier in the user interface is simple HTML. This language defines the structure of the web page. It dictates where the content will be placed and how it will be styled. HTML is also client-side, however it is not considered a programming language. It cannot perform calculations or understand conditional statements; It is simply a markup language. The HTML elements are known as DOM nodes and are manipulated by jQuery to present dynamic content.
 
-		Continuing to embrace the idea of simplicity and modularity, I made use of a powerful HTML framework called Twitter Bootstrap\footnote{http://twitter.github.io/bootstrap}. This provided a basic grid layout as a skeleton and a handful of style rules to make the web page visually appealing. Using the grid layout, I was able to design a page that is visually modular. Similar components are grouped together instead of being scattered throughout the page, much like the code (\FIG \ref{fig:mon_ui}). 
+			Continuing to embrace the idea of simplicity and modularity, I made use of a powerful HTML framework called Twitter Bootstrap\footnote{http://twitter.github.io/bootstrap}. This provided a basic grid layout as a skeleton and a handful of style rules to make the web page visually appealing. Using the grid layout, I was able to design a page that is visually modular. Similar components are grouped together instead of being scattered throughout the page, much like the code (\FIG \ref{fig:mon_ui}). 
 
-		The basic infrastructure that powers the HALO Remote Monitoring Tool is currently in place. It includes automated data scrapers, a centralized database and a user interface powered by server-side, client-side, and markup languages. At the time of writing, the collaboration is in the process of deciding exactly which quantities we want to monitor with the tool. The modularity I built into the code will make that process trivial; any new code will essentially be ``plug and play". 
+			The basic infrastructure that powers the HALO Remote Monitoring Tool is currently in place. It includes automated data scrapers, a centralized database and a user interface powered by server-side, client-side, and markup languages. At the time of writing, the collaboration is in the process of deciding exactly which quantities we want to monitor with the tool. The modularity I built into the code will make that process trivial; any new code will essentially be ``plug and play". 
 
 
+	%% SECTION : CURRENT STATUS AND FUTURE WORK
 	\section{Current Status and Future Work}
 		I will continue to develop and document the HALO Remote Monitoring Tool for the time being. I expect it to be ready for regular use during shift reports within the next month, representing a milestone in the process of bringing HALO closer to its final, steady state configuration. 
 

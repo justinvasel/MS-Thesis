@@ -1,12 +1,13 @@
 %-----------------------------------------------------------------------------
 %
-%          PHYSICS  M.S.     THESIS
+%          PHYSICS  M.S. THESIS
 %          JUSTIN A. VASEL
+%
+%          -->  TeX/thesis.tex
 %
 %          This began as the template offered by the University of Minnesota, 
 %          but I've made a few changes here and there...  
 %
-%          -->  TeX/thesis.tex
 %
 %-----------------------------------------------------------------------------
 
@@ -15,122 +16,120 @@
 %-------------------------------------------------------------------------------
 %    //  P R E A M B L E
 %===============================================================================
-	\documentclass[12pt, twoside, fleqn]{./Styles/mnthesis}
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%
-	%   //  PACKAGES        %
-	%%%%%%%%%%%%%%%%%%%%%%%%%
-		% // EPS Files
-			\usepackage{epsfig}
-			\usepackage{epic}
-			\usepackage{eepic}
+    
+    % Print as two-sided document with left-aligned equations
+    % and 12pt font by default.
+    \documentclass[12pt, twoside, fleqn]{./Styles/mnthesis}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%
+    %   //  PACKAGES        %
+    %%%%%%%%%%%%%%%%%%%%%%%%%
+        % // EPS Files
+            \usepackage{epsfig}                 % What's the difference between these three
+            \usepackage{epic}                   % packages? No idea. I'll eventually figure
+            \usepackage{eepic}                  % it out and delete any that are redundant.
 
-		% // Graphics and Figures
-			\usepackage{graphicx}
-			\usepackage{float}
-			\usepackage[font=small]{caption}
-			\usepackage{subcaption}
-			\usepackage{wrapfig}
+        % // Graphics and Figures
+            \usepackage{graphicx}               % Graphics importing library
+            \usepackage{float}                  % Placement of floats; required for this class
+            \usepackage[font=small]{caption}    % Set formatting options for captions
+            \usepackage{subcaption}
+            \usepackage{wrapfig}                % Wrap text around figures
 
-		% // TikZ
-			\usepackage[usenames,dvipsnames]{xcolor}
-			\usepackage{tikz}
-				\usetikzlibrary{decorations.pathmorphing,decorations.markings,trees,arrows}
-				\pgfdeclarelayer{background}
-				\pgfdeclarelayer{foreground}
-				\pgfsetlayers{background,main,foreground}
-			\usepackage{pgfplots}
+        % // TikZ
+            \usepackage[usenames,dvipsnames]{xcolor}
+            \usepackage{tikz}                   % Make vector diagrams
+                \usetikzlibrary{decorations.pathmorphing,decorations.markings,trees,arrows}
+                \pgfdeclarelayer{background}
+                \pgfdeclarelayer{foreground}
+                \pgfsetlayers{background,main,foreground}
+            \usepackage{pgfplots}               % Produce basic plots with (x,y) data
 
-		% // Tables
-			\usepackage{array}
-			\usepackage{multirow}
-			\usepackage{longtable}
-			\usepackage{booktabs}
+        % // Tables
+            \usepackage{array}
+            \usepackage{multirow}               % Let cells span multiple rows
+            \usepackage{longtable}              % For tables that span multiple pages
+            \usepackage{booktabs}               % Makes tables look better
 
-		% // Maths
-			\usepackage{amsmath}
-			\usepackage{amssymb}
-			\usepackage{mathrsfs}
+        % // Maths
+            \usepackage{amsmath}                % Makes maths look pretty
+            \usepackage{amssymb}                % Something to do with symbols...
+            \usepackage{mathrsfs}               % Totally forgot what this is. 
 
-		% // HEP
-			\usepackage{braket}			% Dirac notation
-			\usepackage{hepparticles}	% Format particle processes
-			\usepackage{hepnames}		% Format particle names
+        % // HEP
+            \usepackage{braket}                 % Dirac notation
+            \usepackage{hepparticles}           % Format particle processes
+            \usepackage{hepnames}               % Format particle names
 
-		% // Hyperlinks
-			\usepackage[colorlinks=true, urlcolor=BrickRed, linkcolor=Black, citecolor=Black]{hyperref}		% href
-			\usepackage{url}			% Don't use, makes text unicode
+        % // Hyperlinks
+            \usepackage[colorlinks=true, urlcolor=BrickRed, linkcolor=Black, citecolor=Black]{hyperref}
+            
+        % // Fonts
+            \usepackage{fontspec}               % Use of system fonts
+            \usepackage{anyfontsize}            % Setting of font size by point
+            \usepackage[utf8x]{inputenc}        % Forgot why this is here. Leaving it for now JIC
 
-		% // Misc.
-			\usepackage[emulate=hepunits,sepfour=true,digitsep=comma]{siunitx}		% Handles unit formatting
-				\DeclareSIUnit\year{yr}
-			\usepackage{lipsum}			% Generate Lorem Ipsum text
-			\usepackage{setspace}
-			\usepackage{titlesec}
-			\usepackage[leftmargin=2in,rightmargin=0in,vskip=0.5in]{./Styles/quoting}
-			\usepackage{lettrine}
-			\usepackage{lineno}
-			\usepackage{listings}
+        % // Misc.
+            \usepackage[emulate=hepunits,sepfour=true,digitsep=comma]{siunitx}      % Handles unit formatting
+                \DeclareSIUnit\year{yr}
+            \usepackage{lipsum}                 % Generate Lorem Ipsum text
+            \usepackage{setspace}
+            \usepackage{titlesec}               % Format section headings
+            \usepackage[leftmargin=2in,rightmargin=0in,vskip=0.5in]{./Styles/quoting}       % Quote environment
+            \usepackage{lettrine}               % Produces lettrine effect, like an old book!
+            \usepackage{lineno}                 % Numbers lines; good for editing
+            \usepackage{listings}               % Code blocks
 
-		% // Unknown
-			\usepackage{./Styles/bigstrut}		% No idea what this does
+        % // Unknown
+            \usepackage{./Styles/bigstrut}      % No idea what this does
 
 
-	%%%%%%%%%%%%%%%%%%%%%%
-	%   //  FONTS        %
-	%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%
+    %   //  FONTS        %
+    %%%%%%%%%%%%%%%%%%%%%%
 
-		% // fontenc may be redundant. fontspec needed to use system fonts
-		\usepackage{fontspec}
-		\usepackage{anyfontsize}
-		\usepackage[utf8x]{inputenc}
+        \setmainfont[Ligatures=TeX]{Adobe Caslon}           % Default Body-Text font
 
-		\setmainfont[Ligatures=TeX]{Adobe Caslon}
+        \newfontfamily\medio[]{Medio}                       % Title ("Under The Hood") font
+        \newfontfamily\light[]{Helvetica Neue UltraLight}   % Subtitle ("Preparing the...") font
+        \newfontfamily\minion[]{Minion Pro}                 % Small Caps font
+        \newfontfamily\bask[]{Baskerville}                  % Links font
 
-		% // DEFINE \neue as `Helvetica Neue'
-		% // DEFINE \light as `Helvetica Neue UltraLight'
-		% // DEFINE \minion as `Minion Pro'
-
-		\newfontfamily\garamond[]{Medio}
-		\newfontfamily\neue[]{Helvetica Neue}
-		\newfontfamily\light[]{Helvetica Neue UltraLight}
-		\newfontfamily\minion[]{Minion Pro}
-		\newfontfamily\caslon[]{Adobe Caslon Pro}
-		\newfontfamily\bask[]{Baskerville}
-
-		% // Custom formatting for chapter titles
-		\titleformat{\chapter}[display]{\nolinenumbers \raggedright \linespread{0.5} \huge}{\chaptertitlename\ \vspace{0.25in} \thechapter}{0pt}{\fontsize{40}{50}\selectfont}
-		
-		% // Custom formatting for captions
-		\DeclareCaptionLabelFormat{smallcaps}{\normalsize \minion \textsc{#1 #2}}
-		\captionsetup[figure]{name=Fig.}
-		\captionsetup{labelformat=smallcaps, labelfont=bf, labelsep=period}
+        % // Custom formatting for chapter titles
+        \titleformat{\chapter}[display]{\nolinenumbers \raggedright \linespread{0.5} \huge}{\chaptertitlename\ \vspace{0.25in} \thechapter}{0pt}{\fontsize{40}{50}\selectfont}
+        
+        % // Custom formatting for captions
+        \DeclareCaptionLabelFormat{smallcaps}{\normalsize \minion \textsc{#1 #2}}
+        \captionsetup[figure]{name=Fig.}
+        \captionsetup{labelformat=smallcaps, labelfont=bf, labelsep=period}
 
 
 
-	%%%%%%%%%%%%%%%%%%%%%%
-	%   //  GRAPHICS     %
-	%%%%%%%%%%%%%%%%%%%%%%
-		
-		% // Set path to look for images and graphics extension types
-		\graphicspath{ {../images/}{../images/Intro/}{../images/Neutrinos/}{../images/Supernovae/}{../images/Snews/}{../images/Halo/}{../images/Conclusion/} }
-		\DeclareGraphicsExtensions{.eps,.pdf,.png}
-		
-		
-		
-	%%%%%%%%%%%%%%%%%%%%%%
-	%   //  OTHER        %
-	%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%
+    %   //  GRAPHICS     %
+    %%%%%%%%%%%%%%%%%%%%%%
+        
+        % // Set path to look for images and graphics extension types
+        \graphicspath{ {../images/}{../images/Intro/}{../images/Neutrinos/}{../images/Supernovae/}{../images/Snews/}{../images/Halo/}{../images/Conclusion/} }
 
-		% // Pull in custom definitions
-		\input{./Definitions/my_definitions}
-		\input{./Definitions/tikz_definitions}
+        % // Automatically assume filname is one of these types, in this order
+        \DeclareGraphicsExtensions{.eps,.pdf,.png}
+        
+        
+        
+    %%%%%%%%%%%%%%%%%%%%%%
+    %   //  OTHER        %
+    %%%%%%%%%%%%%%%%%%%%%%
 
-		% // Set linespacing for document
-		\linespread{1.3}
+        % // Pull in custom definitions
+        \input{./Definitions/my_definitions}
+        \input{./Definitions/tikz_definitions}
 
-		% // Algin all math environs to left side
-		\setlength{\mathindent}{1cm}
+        % // Set linespacing for document (1.3x spacing)
+        \linespread{1.3}
+
+        % // math environs are already left-aligned, but lets indent them by 1cm
+        \setlength{\mathindent}{1cm}
 
 
 
@@ -138,58 +137,58 @@
 %-------------------------------------------------------------------------------
 %    //  B E G I N   D O C U M E N T
 %===============================================================================
-	\begin{document}
+    \begin{document}
 
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%   //  BUILD DOCUMENT        %
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		
-		% // Frontmatter
-			\include{./Frontmatter/title}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %   //  BUILD DOCUMENT        %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        % // Frontmatter
+            \include{./Frontmatter/title}
 
-		% // Main Body
-			\cleardoublepage % // Ensures each chapter starts on a right-handed page
-			\include{./Chapters/01-intro}
-			
-			\cleardoublepage
-			\include{./Chapters/02-neutrinos}
-			
-			\cleardoublepage
-			\include{./Chapters/03-supernovae}
+        % // Main Body
+            \cleardoublepage % // Ensures each chapter starts on a right-handed page
+            \include{./Chapters/01-intro}
+            
+            \cleardoublepage
+            \include{./Chapters/02-neutrinos}
+            
+            \cleardoublepage
+            \include{./Chapters/03-supernovae}
 
-			\cleardoublepage
-			\include{./Chapters/04-snews}
-			
-			\cleardoublepage
-			\include{./Chapters/05-halo}
-			
-			\cleardoublepage
-			\include{./Chapters/06-contribution}
+            \cleardoublepage
+            \include{./Chapters/04-snews}
+            
+            \cleardoublepage
+            \include{./Chapters/05-halo}
+            
+            \cleardoublepage
+            \include{./Chapters/06-contribution}
 
-			\cleardoublepage
-			\include{./Chapters/07-conclusion}
-
-
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%   //  BIBLIOGRAPHY          %
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-		% // Style provided by the University of Minnesota
-		\bibliographystyle{./Styles/hunsrt}
-
-		% // Read BibTeX file
-		\bibliography{thesis}
+            \cleardoublepage
+            \include{./Chapters/07-conclusion}
 
 
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%   //  APPENDICES            %
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %   //  BIBLIOGRAPHY          %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		%\appendix
-		%\include{./Appendicies/app_glossary}
+        % // Style provided by the University of Minnesota
+        \bibliographystyle{./Styles/hunsrt}
+
+        % // Read BibTeX file
+        \bibliography{thesis}
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %   //  APPENDICES            %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        %\appendix
+        %\include{./Appendicies/app_glossary}
 
 
 
@@ -198,9 +197,4 @@
 %-------------------------------------------------------------------------------
 %    //  E N D   D O C U M E N T
 %===============================================================================
-	\end{document}
-
-
-
-
-
+    \end{document}

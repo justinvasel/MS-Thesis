@@ -56,7 +56,6 @@
 			\usepackage{braket}			% Dirac notation
 			\usepackage{hepparticles}	% Format particle processes
 			\usepackage{hepnames}		% Format particle names
-			%\usepackage{hepunits}		% Format HEP units
 
 		% // Hyperlinks
 			\usepackage[colorlinks=true, urlcolor=BrickRed, linkcolor=Black, citecolor=Black]{hyperref}		% href
@@ -69,11 +68,9 @@
 			\usepackage{setspace}
 			\usepackage{titlesec}
 			\usepackage[leftmargin=2in,rightmargin=0in,vskip=0.5in]{quoting}
-			%\usepackage{indent first}
 			\usepackage{lettrine}
 			\usepackage{lineno}
 			\usepackage{listings}
-			%\usepackage{minted}
 
 		% // Unknown
 			\usepackage{bigstrut}		% No idea what this does
@@ -84,23 +81,16 @@
 	%%%%%%%%%%%%%%%%%%%%%%
 
 		% // fontenc may be redundant. fontspec needed to use system fonts
-		%\usepackage[T1]{fontenc}
 		\usepackage{fontspec}
 		\usepackage{anyfontsize}
 		\usepackage[utf8x]{inputenc}
-		%\usepackage{bera}
 
-		% // Required in XeLaTeX to make system fonts have TeX ligatures
-		%\defaultfontfeatures{Ligatures=TeX}
-
-		% // Set the default document font to `Baskerville'
-		%\setmainfont{Baskerville}
 		\setmainfont[Ligatures=TeX]{Adobe Caslon}
 
 		% // DEFINE \neue as `Helvetica Neue'
 		% // DEFINE \light as `Helvetica Neue UltraLight'
 		% // DEFINE \minion as `Minion Pro'
-		%\newfontfamily\garamond[]{Goudy Old Style}
+
 		\newfontfamily\garamond[]{Medio}
 		\newfontfamily\neue[]{Helvetica Neue}
 		\newfontfamily\light[]{Helvetica Neue UltraLight}
@@ -133,8 +123,8 @@
 	%%%%%%%%%%%%%%%%%%%%%%
 
 		% // Pull in custom definitions
-		\input{my_definitions}
-		\input{tikz_definitions}
+		\input{./Definitions/my_definitions}
+		\input{./Definitions/tikz_definitions}
 
 		% // Set linespacing for document
 		\linespread{1.3}

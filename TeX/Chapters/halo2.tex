@@ -48,7 +48,7 @@
 
 	\section{DAQ Software Development}
 	\label{sec:orca_development}
-		The HALO detector and its related hardware is monitored and controlled by a software package called ORCA (Object-oriented Real-time Control and Acquisition), developed by Mark Howe at the University of North Carolina at Chapel Hill.\footnote{http://orca.physics.unc.edu/$\sim$markhowe/Orca\_Help/Home.html} ORCA is written in Objective-C using the Cocoa framework and Apple Developer Tools. It is a powerful application, providing native support for a wide range of devices, data readout and analysis tools, and the ability to write custom processes within the software. Being well-versed on the Apple OS X operating system, it made sense for me to act as the liaison between HALO and ORCA development. 
+		The HALO detector and its related hardware is monitored and controlled by a software package called ORCA (Object-oriented Real-time Control and Acquisition), developed by Mark Howe at the University of North Carolina at Chapel Hill.\footnote{http://orca.physics.unc.edu/$\sim$markhowe/} ORCA is written in Objective-C using the Cocoa framework and Apple Developer Tools. It is a powerful application, providing native support for a wide range of devices, data readout and analysis tools, and the ability to write custom processes within the software. Being well-versed on the Apple OS X operating system, it made sense for me to act as the liaison between HALO and ORCA development. 
 
 		ORCA is open-source. It is tracked using Subversion and compiled using Apple's Xcode4 software. We wanted to have the ability to add functionality to ORCA that we needed at HALO. Before I could do that, though, I had to learn Objective-C. I hadn't done much with object-oriented languages in the past, so I found Objective-C to be quite abstract and the learning curve steep. 
 
@@ -235,7 +235,7 @@
 
 		Continuing to embrace the idea of simplicity and modularity, I made use of a powerful HTML framework called Twitter Bootstrap\footnote{http://twitter.github.io/bootstrap}. This provided a basic grid layout as a skeleton and a handful of style rules to make the web page visually appealing. Using the grid layout, I was able to design a page that is visually modular. Similar components are grouped together instead of being scattered throughout the page, much like the code (\FIG \ref{fig:mon_ui}). 
 
-		The basic infrastructure that powers the HALO Remote Monitoring Tool---automated data scrapers, a centralized database, the user interface powered by server-side, client-side, and markup languages---is currently in place. At the time of writing, the collaboration is in the process of deciding exactly which quantities we want to monitor with the tool. The modularity I built into the code will make that process trivial; any new code will essentially be ``plug and play". 
+		The basic infrastructure that powers the HALO Remote Monitoring Tool is currently in place. It includes automated data scrapers, a centralized database and a user interface powered by server-side, client-side, and markup languages. At the time of writing, the collaboration is in the process of deciding exactly which quantities we want to monitor with the tool. The modularity I built into the code will make that process trivial; any new code will essentially be ``plug and play". 
 
 
 	\section{Current Status and Future Work}

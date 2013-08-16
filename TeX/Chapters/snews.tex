@@ -23,7 +23,7 @@
 
 	\chapterIntro{L}{ittle is known about the behavior of a star moments from death.} Understanding of main-sequence stellar behavior is always improving thanks to a robust nuclear theory, powerful computational models, and observation. But, after a star moves off of the main sequence conditions inside are harder to predict with any confidence. Perhaps the best example of this are the moments immediately preceding and immediately following the eruptions of large stars. Computational models are always improving, but its very hard to compare them with observations because it is difficult to predict when and where a supernova will occur. 
 
-	The possibility of using the neutrino signal as an advance warning of the photon signal was fully realized with the eruption of SN 1987a, \SI{50}{\kilo\parsec} away in the Large Magellanic Cloud. A handful of neutrino detectors at the time recorded the event. A total of 26 events were observed between Kamiokande-II, IMB, and Baksan over a period of 13 seconds, all with energies $\lesssim$ \nolinebreak \eMeV{40}\cite{kii1987a,imb_1987a,baksan1987a}.
+	The possibility of using the neutrino signal as an advance warning of the photon signal was fully realized with the eruption of SN 1987a, \SI{50}{\kilo\parsec} away in the Large Magellanic Cloud. A handful of neutrino detectors at the time recorded the event. A total of 26 events were observed between Kamiokande-II, IMB, and Baksan over a period of 13 seconds, all with energies $\lesssim$ \nolinebreak \eMeV{40} (\FIG \ref{fig:SN1987curve})\cite{kii1987a,imb_1987a,baksan1987a}.
 
 	\begin{figure}[H]
 	\centering
@@ -42,16 +42,16 @@
 		        \addlegendentry{Baksan}
 		    \end{axis}
 	    \end{tikzpicture}
-	    \caption[Observed Neutrino Spectrum From SN 1987a]{\bf Observed neutrino spectrum from SN 1987a. \rm Twenty six events were recorded by three separate experiments during a 13-second period. A scintillator detector in Mont Blanc in Italy detected a neutrino signal, but it was not coincident with the other detectors and are not thought to be associated with the supernova\cite{Arnett1989}.} \label{}
+	    \caption[Observed Neutrino Spectrum From SN 1987a]{\bf Observed neutrino spectrum from SN 1987a. \rm Twenty six events were recorded by three separate experiments during a 13-second period. A scintillator detector in Mont Blanc in Italy detected a neutrino signal, but it was not coincident with the other detectors and are not thought to be associated with the supernova\cite{Arnett1989}.} \label{fig:SN1987curve}
 	\end{figure}
 
-	The Supernova Early Warning System (SNEWS)\footnote{http://snews.bnl.gov} is hoping to take advantage of the neutrino signal generated during galactic core-collapse supernovae to identify the explosion before the photon signal arrives. SNEWS is a world-wide network of neutrino detectors that will listen for that distinct neutrino signal and alert the astronomical community upon its arrival. Astronomers will only have several hours to prepare their observations. 
+	The Supernova Early Warning System (SNEWS)\footnote{http://snews.bnl.gov} \cite{Scholberg2008} is hoping to take advantage of the neutrino signal generated during galactic core-collapse supernovae to identify the explosion before the photon signal arrives. SNEWS is a world-wide network of neutrino detectors that will listen for that distinct neutrino signal and alert the astronomical community upon its arrival. Astronomers will only have several hours to prepare their observations. 
 
 
 
 	%% SECTION : A WORLD-WIDE NETWORK OF NEUTRINO DETECTORS
 	\section{A World-Wide Network of Neutrino Detectors}
-	There are at present five neutrino observatories actively participating in SNEWS: IceCube in Antarctica, Borexino and the Large Volume Detector (LVD) in Italy, and Super-Kamiokande (Super-K) and KamLAND in Japan. HALO and a few other experiments like SNO+ in Canada and NO$\nu$A in Minnesota plan to join that list soon. 
+	There are at present five neutrino observatories actively participating in SNEWS: IceCube in Antarctica, Borexino and the Large Volume Detector (LVD) in Italy, and Super-Kamiokande (Super-K) and KamLAND in Japan. HALO and a few other experiments like SNO+ in Canada and NO$\nu$A in Minnesota plan to join that list soon. A brief summary of each detector is given in \TAB \ref{table:snews_detectors}.
 		\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\textwidth]{snews_map}
@@ -104,12 +104,12 @@
 	\end{wrapfigure}
 
 
-	To ensure that a SNEWS alert is taken seriously, the false-alarm rate of SNEWS must be very low. SNEWS aims for a false-alarm rate of fewer than one per century. To achieve this, SNEWS requires that each experiment has a false-alarm rate of less than once per week and that at least two detectors send an alert within ten seconds of each other. This 2-fold coincidence between detectors ensures the once-per-century threshold can be achieved, but only with three actively participating experiments. If more than three experiments are participating, the coincidence between detectors must be at least 3-fold if each detector is to maintain a once-per-week false alarm rate pre-coincidence.
+	To ensure that a SNEWS alert is taken seriously, the false-alarm rate of SNEWS must be very low. SNEWS aims for a false-alarm rate of fewer than one per century. To achieve this, SNEWS requires that each experiment has a false-alarm rate of less than once per week and that at least two detectors send an alert within ten seconds of each other. This 2-fold coincidence between detectors ensures the once-per-century threshold can be achieved, but only with three actively participating experiments. If more than three experiments are participating, the coincidence between detectors must be at least 3-fold if each detector is to maintain a once-per-week false alarm rate pre-coincidence (\FIG \ref{fig:coincidence}).
 
 
 	%% SECTION : ALERTING THE ASTRONOMICAL COMMUNITY
 	\section{Alerting the Astronomical Community}
-	Each experiment participating in SNEWS is responsible for implementing an automated supernova trigger with the certainty detailed in the previous section. When an experiment's trigger is activated, the experiment will send an alarm datagram to the ``coincidence server'' in Brookhaven National Laboratory. The coincidence server then scrutinizes the datagram and listens for coincident alarms from other experiments. A 2-fold coincidence within 10 seconds is required to trigger an automated alert. If the coincidence criterion is not met, an individual alert can be sent if the experiment confirms the signal is not noise, otherwise the datagram is discarded and SNEWS returns to waiting for alarms.
+	Each experiment participating in SNEWS is responsible for implementing an automated supernova trigger with the certainty detailed in the previous section. When an experiment's trigger is activated, the experiment will send an alarm datagram to the ``coincidence server'' in Brookhaven National Laboratory. The coincidence server then scrutinizes the datagram and listens for coincident alarms from other experiments. A 2-fold coincidence within 10 seconds is required to trigger an automated alert. If the coincidence criterion is not met, an individual alert can be sent if the experiment confirms the signal is not noise, otherwise the datagram is discarded and SNEWS returns to waiting for alarms (\FIG \ref{fig:flowchart}).
 
 	If the coincidence criterion is met, then SNEWS will issue either a GOLD or SILVER alert, depending the quality of the alarm received. Besides coincidence, for a GOLD alarm to be issued at least two of the experiments involved must be a physically separated laboratories. Furthermore two or more of the alarms received must be flagged as ``GOOD''. This means that the alarm was received while the experiments were operating under normal conditions, rather than operating during maintenance or callibrtion, for example. Finally, at least two of the experiments involved must have had an acceptable false-alarm rate of \SI[mode=text]{1}{week^{-1}} during the past time intervals $\{T_i\} = \{\SI[mode=text]{10}{minutes}, \SI[mode=text]{1}{hour}, \SI[mode=text]{10}{hours}, \SI[mode=text]{1}{day}, \SI[mode=text]{3}{days}, \SI[mode=text]{1}{week}, \SI[mode=text]{1}{month}\}$.
 

@@ -26,7 +26,7 @@
 	
 	\section{Supernova Taxonomy}
 		Supernova taxonomy is not an exact science. They are classified merely by the appearance of their spectra. In that respect, supernovae are to the astronomer as insects are to the biologist, rocks to the geologist, or artifacts to the archaeologist. The classification of supernovae is---as Ernest Rutherford would say---stamp collecting. 
-		Generally speaking there are two types of supernova: Type I and Type II. The difference between them is that the spectra of Type II supernovae contain very prominent hydrogen lines, while those of Type I do not. Furthermore the Type I supernovae are divided into two types depending on whether their spectra contain silicon (Type Ia) or not. The latter of these---devoid of hydrogen and devoid of silicon---are again divided in two, depending on whether they're helium rich (Type Ib) or helium poor (Type Ic).
+		Generally speaking there are two types of supernova: Type I and Type II. The difference between them is that the spectra of Type II supernovae contain very prominent hydrogen lines, while those of Type I do not. Furthermore the Type I supernovae are divided into two types depending on whether their spectra contain silicon (Type Ia) or not. The latter of these---devoid of hydrogen and devoid of silicon---are again divided in two, depending on whether they're helium rich (Type Ib) or helium poor (Type Ic) (\FIG \ref{fig:sn_types}).
 
 		Type Ia supernovae are perhaps the most distinct of the three Type I supernovae. The situation in which they are thought to occur is that of a white dwarf in binary orbit with a companion star. Matter from the companion accretes onto the white dwarf until the Chandrasekhar limit of \ 1.4 \emph{M}$_\odot$ is reached. At that point the degeneracy pressure is overcome by gravity, causing the white dwarf to collapse and then explode when its carbon ignites. The explosion is so catastrophic that there is likely no remnant left in its wake. What's interesting about Type Ia supernovae is that they all explode at the same mass, 1.4 \emph{M}$_\odot$. The consistency of their eruptions---and, therefore, their spectra---make them ideal standard candles, allowing the astronomer to calculate intergalactic distances simply by measuring the peak brightness of their light curve.
 
@@ -34,45 +34,6 @@
 
 		The Type II supernovae are also divided into two groups and are distinguished by the shape of their light curve. The Type II-L has a light curve that decays rather linearly after maximum brightness while the Type II-P has one that plateaus after maximum brightness. Stars that become Type II supernovae are massive. As a result, they tend to live relatively short lives, making them more likely to be found in the arms of spiral galaxies where active star formation is occurring. The explosion mechanism for Type II supernovae is core-collapse, like the Type Ib/Ic supernovae. 
 		These Type II supernovae are more common\cite{sn_rate} and will be the focus of the rest of the chapter. Throughout the rest of this thesis, I will make no further distinction between the Type II and Type Ib/Ic supernovae, but will instead refer to them collectively as ``core-collapse'' supernovae.
-
-		% \begin{center}
-		% 	\begin{tikzpicture}[
-		% 	  font=\sffamily,
-		% 	  every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
-		% 	  source/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
-		% 	  process/.style={draw,thick,circle,fill=blue!20},
-		% 	  sink/.style={source,fill=green!20},
-		% 	  datastore/.style={draw,very thick,shape=datastore,inner sep=.3cm},
-		% 	  dots/.style={gray,scale=2},
-		% 	  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
-		% 	  every node/.style={align=center}]
-
-		% 	  % Position the nodes using a matrix layout
-		% 	  \matrix{
-		% 	    \node[source] (hisparcbox) {electronics};
-		% 	      \& \node[process] (daq) {DAQ}; \& \\
-
-		% 	    \& \node[datastore] (buffer) {buffer}; \& \\
-
-		% 	    \node[datastore] (storage) {storage};
-		% 	      \& \node[process] (monitor) {monitor};
-		% 	      \& \node[sink] (datastore) {datastore}; \\
-		% 	  };
-
-		% 	  % Draw the arrows between the nodes and label them.
-		% 	  \draw[to] (hisparcbox) -- node[midway,above] {raw events}
-		% 	      node[midway,below] {level 0} (daq);
-		% 	  \draw[to] (daq) -- node[midway,right] {raw event data\\level 1} (buffer);
-		% 	  \draw[to] (buffer) --
-		% 	      node[midway,right] {raw event data\\level 1} (monitor);
-		% 	  \draw[to] (monitor) to[bend right=50] node[midway,above] {events}
-		% 	      node[midway,below] {level 1} (storage);
-		% 	  \draw[to] (storage) to[bend right=50] node[midway,above] {events}
-		% 	      node[midway,below] {level 1} (monitor);
-		% 	  \draw[to] (monitor) -- node[midway,above] {events}
-		% 	      node[midway,below] {level 1} (datastore);
-		% 	\end{tikzpicture}
-		% \end{center}
 
 		\begin{figure}[H]
 			\begin{center}
@@ -103,7 +64,7 @@
 		\end{figure}
 
 	\section{Shell Burning}
-		Stars of mass \emph{M} $\gtrsim$ 8 \emph{M}$_\odot$ undergo a relatively brief period at the end of their lives in which a series of nuclear reactions occur within their core\cite{bob}. When the hydrogen fuel is exhausted, the core contracts until the temperature is high enough to fuse helium. Once helium is exhausted, the core contracts again until carbon-burning begins. This process continues, the core burns through successively heavier elements, and the duration of each burning stage decreases substantially. The specifics of this process depend intimately on the mass of the star. An example for a 15 \emph{M}$_\odot$ star is summarized in \TAB \ref{table:shell_burning}.
+		Stars of mass \emph{M} $\gtrsim$ 8 \emph{M}$_\odot$ undergo a relatively brief period at the end of their lives in which a series of nuclear reactions occur within their core\cite{bob}. When the hydrogen fuel is exhausted, the core contracts until the temperature is high enough to fuse helium. Once helium is exhausted, the core contracts again until carbon-burning begins. This process continues, the core burns through successively heavier elements, and the duration of each burning stage decreases substantially. The specifics of this process depend intimately on the mass of the star. An example for a 15 \emph{M}$_\odot$ star is summarized in \TAB \nolinebreak \ref{table:shell_burning}.
 
 		\begin{table}[H]
 		\centering
@@ -139,11 +100,7 @@
 		\begin{equation}
 			M_{\text{Ch}} = 5.84 \ Y^2_e \ M_\odot \approx 1.4 \ M_\odot
 		\end{equation}
-		where $Y_e$ is the number of electrons per nucleon. As the neutrinos stream from the core, they take energy with them leading to a steady reduction of entropy---and therefore an increase in electron degeneracy---in the core\cite{Burrows2013}. This exodus of neutrinos intensifies with each stage of nuclear burning, such that by the time the core is burning silicon, neutrino emission is enormous: A 20 $M_\odot$ star would have a photon luminosity of $\sim \SI[mode=text]{4.4e38}{ergs \second^{-1}}$ and a neutrino luminosity of $\sim \SI[mode=text]{3.1e45}{ergs \second^{-1}}$\cite{astrophysics}.
-
-		% This limiting mass is the upper bound for objects to counteract their own gravitational pressure with electron degeneracy pressure. When nuclear synthesis ceases in the core, the radiation pressure that has supported the rest of the star disappears, and the massive core collapses. This collapse will be discussed in detail in the following section, but, first I will outline the final steps of the shell burning regime.
-
-		% The core mass of a sufficiently massive star will be driven towards $M_\text{Ch}$ during the silicon burning stage. Silicon burning occurs at temperatures that require $M_\text{core}\gtrsim M_\text{Ch}$. If the mass of the core is not sufficiently large, the core will contract like every stage before until $M_\text{core}\approx M_\text{Ch}$. If instead the core mass is larger than $M_\text{Ch}$ at any point before nuclear fusion has permanently ceased, the rate of neutrino cooling is relatively high,\footnote{The rate at which neutrino cooling occurs varies as a high power of $T$\cite{astrophysics}.} causing the core to shrink and its mass to approach $M_\text{Ch}$.
+		where $Y_e$ is the number of electrons per nucleon. As the neutrinos stream from the core, they take energy with them leading to a steady reduction of entropy---and therefore an increase in electron degeneracy---in the core\cite{Burrows2013}. This exodus of neutrinos intensifies with each stage of nuclear burning, such that by the time the core is burning silicon, neutrino emission is enormous: A 20 $M_\odot$ star would have a photon luminosity of $\sim \SI[mode=text]{4.4e38}{ergs \second^{-1}}$ and a neutrino luminosity of $\sim \SI[mode=text]{3.1e45}{ergs \second^{-1}}$\cite{astrophysics}. These neutrinos are not currently detectable at Earth; their energies are below the observational limits of today's neutrino observatories.
 
 		The products of silicon burning are nuclei centered around the $^{56}_{26}$Fe peak. Subsequent nuclear fusion of iron does not release nuclear binding energy, so there is no radiation pressure to support the core. The entropy of the core at this stage is very low ($\sim 0.7$ --- $1 \ k_b$ per nucleon\cite{Burrows2013})\footnote{$k_b$ is Boltzmann's constant.} and the electronic population is nearly fully degenerate and relativistic; the core briefly resembles a white dwarf. The only thing supporting the core is the electron degeneracy pressure, but with mass falling onto the iron core the Chandrasekhar mass is soon achieved and collapse proceeds unhindered.
 
@@ -182,7 +139,7 @@
 			\caption[Simulated Supernova Neutrino Signal]{\bf Simulated supernova neutrino signal. \rm The simulation of this $15 M_\odot$ star was general relativistic and 2 dimensional. The black lines are for $\HepParticle{\Pnue}{}{}$, the red lines for $\HepParticle{\APnue}{}{}$, and the blue lines for heavier neutrinos $\nu_x$ \cite{Janka2012}. The neutrino flux persists for several tens of seconds and then fades.}
 			\label{fig:neutrino_time}
 		\end{figure}
-		The electron neutrinos are the first to leave the star. These were the result of neutronization of the inner core and were the constituents of the neutrino breakout. This burst is expected to last for a few tens of milliseconds\cite{Scholberg2012}. Neutrinos generated during shock revival are also predominantly electron flavored. The duration of this period is on the order of $\sim\SI{100}{\milli\second}$\cite{Scholberg2012}. At a post-bounce time of $t \gtrsim\SI{100}{\milli\second}$, convective processes in the neutron star increase the flux of heavier neutrino flavors\cite{Janka2012a}. Over the next ten or twenty seconds, the core cools via neutrino emission. The spectrum of neutrino energies (\FIG \ref{fig:neutrino_fluence}) emitted from the explosion are centered around a value just above \eMeV{10}\cite{cosmology}.
+		The electron neutrinos are the first to leave the star. These were the result of neutronization of the inner core and were the constituents of the neutrino breakout. This burst is expected to last for a few tens of milliseconds\cite{Scholberg2012}. Neutrinos generated during shock revival are also predominantly electron flavored. The duration of this period is on the order of $\sim\SI{100}{\milli\second}$\cite{Scholberg2012}. At a post-bounce time of $t \gtrsim\SI{100}{\milli\second}$, convective processes in the neutron star increase the flux of heavier neutrino flavors\cite{Janka2012a}. Over the next ten or twenty seconds, the core cools via neutrino emission (\FIG \ref{fig:neutrino_time}). The spectrum of neutrino energies (\FIG \ref{fig:neutrino_fluence}) emitted from the explosion are centered around a value just above \eMeV{10}\cite{cosmology}.
 
 		\begin{figure}[H]
 			\centering

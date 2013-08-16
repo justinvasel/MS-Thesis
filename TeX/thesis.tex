@@ -6,7 +6,7 @@
 %          This began as the template offered by the University of Minnesota, 
 %          but I've made a few changes here and there...  
 %
-%          -->  thesis.tex
+%          -->  TeX/thesis.tex
 %
 %-----------------------------------------------------------------------------
 
@@ -139,23 +139,16 @@
 %    //  B E G I N   D O C U M E N T
 %===============================================================================
 	\begin{document}
-	
-	% // Show all cite & un-cited references
-	%\nocite{*}
 
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%   //  BUILD DOCUMENT        %
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-		%\frontmatter		
+		
 		% // Frontmatter
 			\include{./Frontmatter/title}
 
-		%\mainmatter
-		% // Background
-			%\linenumbers
-			
+		% // Main Body
 			\cleardoublepage % // Ensures each chapter starts on a right-handed page
 			\include{./Chapters/01-intro}
 			
@@ -165,7 +158,6 @@
 			\cleardoublepage
 			\include{./Chapters/03-supernovae}
 
-		% // HALO
 			\cleardoublepage
 			\include{./Chapters/04-snews}
 			
@@ -175,7 +167,6 @@
 			\cleardoublepage
 			\include{./Chapters/06-contribution}
 
-		% // Conclusion
 			\cleardoublepage
 			\include{./Chapters/07-conclusion}
 

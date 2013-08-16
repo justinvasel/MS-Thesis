@@ -15,7 +15,7 @@
 %-------------------------------------------------------------------------------
 %    //  P R E A M B L E
 %===============================================================================
-	\documentclass[12pt, twoside, fleqn]{mnthesis}
+	\documentclass[12pt, twoside, fleqn]{./Styles/mnthesis}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%
 	%   //  PACKAGES        %
@@ -67,13 +67,13 @@
 			\usepackage{lipsum}			% Generate Lorem Ipsum text
 			\usepackage{setspace}
 			\usepackage{titlesec}
-			\usepackage[leftmargin=2in,rightmargin=0in,vskip=0.5in]{quoting}
+			\usepackage[leftmargin=2in,rightmargin=0in,vskip=0.5in]{./Styles/quoting}
 			\usepackage{lettrine}
 			\usepackage{lineno}
 			\usepackage{listings}
 
 		% // Unknown
-			\usepackage{bigstrut}		% No idea what this does
+			\usepackage{./Styles/bigstrut}		% No idea what this does
 
 
 	%%%%%%%%%%%%%%%%%%%%%%
@@ -186,7 +186,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 		% // Style provided by the University of Minnesota
-		\bibliographystyle{hunsrt}
+		\bibliographystyle{./Styles/hunsrt}
 
 		% // Read BibTeX file
 		\bibliography{thesis}

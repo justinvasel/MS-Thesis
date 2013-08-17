@@ -1,9 +1,24 @@
+%-----------------------------------------------------------------------------
+%
+%          PHYSICS  M.S. THESIS
+%          JUSTIN A. VASEL
+%
+%          -->  TeX/Definitions/tikz_definitions.tex
+%
+%          This began as the template offered by the University of Minnesota, 
+%          but I've made a few changes here and there...  
+%
+%-----------------------------------------------------------------------------
+
  % place an inline node that is remembered for tikz
     % \tikzremember{<node name>}
     %   note: you have to compile twice
     \newcommand{\tikzremember}[1]{{
       \tikz[remember picture,overlay]{\node (#1) at (0,11pt) { };}
     }}
+
+    % Used in the supernova classification TikZ diagram
+    \definecolor{light-gray}{gray}{0.3}
 
 
 % // Decoration for Feynman diagram symbols

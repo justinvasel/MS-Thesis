@@ -1,3 +1,11 @@
+ % place an inline node that is remembered for tikz
+    % \tikzremember{<node name>}
+    %   note: you have to compile twice
+    \newcommand{\tikzremember}[1]{{
+      \tikz[remember picture,overlay]{\node (#1) at (0,11pt) { };}
+    }}
+
+
 % // Decoration for Feynman diagram symbols
   \tikzset{
       photon/.style={

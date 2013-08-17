@@ -24,10 +24,6 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%
     %   //  PACKAGES        %
     %%%%%%%%%%%%%%%%%%%%%%%%%
-        % // EPS Files
-            \usepackage{epsfig}                 % What's the difference between these three
-            \usepackage{epic}                   % packages? No idea. I'll eventually figure
-            \usepackage{eepic}                  % it out and delete any that are redundant.
 
         % // Graphics and Figures
             \usepackage{graphicx}               % Graphics importing library
@@ -53,8 +49,7 @@
 
         % // Maths
             \usepackage{amsmath}                % Makes maths look pretty
-            \usepackage{amssymb}                % Something to do with symbols...
-            \usepackage{mathrsfs}               % Totally forgot what this is. 
+            \usepackage{amssymb}                % Something to do with symbols... 
 
         % // HEP
             \usepackage{braket}                 % Dirac notation
@@ -98,7 +93,7 @@
         \newfontfamily\bask[]{Baskerville}                  % Links font
 
         % // Custom formatting for chapter titles
-        \titleformat{\chapter}[display]{\nolinenumbers \raggedright \linespread{0.5} \huge}{\chaptertitlename\ \vspace{0.25in} \thechapter}{0pt}{\fontsize{40}{50}\selectfont}
+        \titleformat{\chapter}[display]{\raggedright \linespread{0.5} \huge}{\chaptertitlename\ \vspace{0.25in} \thechapter}{0pt}{\fontsize{40}{50}\selectfont}
         
         % // Custom formatting for captions
         \DeclareCaptionLabelFormat{smallcaps}{\normalsize \minion \textsc{#1 #2}}
